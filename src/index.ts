@@ -46,7 +46,7 @@ export type CancelListPayload = {
 
 export type BuyPayload = {
   network: Network
-  signer: ethers.Signer
+  signer: string
 
   tokenAddress: string
   tokenId: string
@@ -74,7 +74,7 @@ export type CancelOfferPayload = {
 
 export type AcceptOfferPayload = {
   network: Network
-  signer: ethers.Signer
+  signer: string
 
   orderId: number
   tokenId: string | undefined
@@ -188,7 +188,7 @@ export async function cancelList(
 
 async function acceptOrder(
   network: Network,
-  signer: ethers.Signer,
+  signer: string,
 
   op: number,
   orderId: number,
@@ -198,7 +198,7 @@ async function acceptOrder(
   callOverrides: ethers.Overrides = {}
 ) {
   const apiClient: APIClient = getSharedAPIClient(network)
-  const accountAddress = await signer.getAddress()
+  const accountAddress = signer
 
   const runInput: RunInput | undefined = await apiClient.fetchOrderSign(
     accountAddress,
@@ -231,8 +231,8 @@ async function acceptOrder(
 
   // Invoke smart contract run
   const marketContract = getNetworkMeta(network).marketContract
-  const market = X2Y2R1__factory.connect(marketContract, signer)
-  const tx = await market.run(runInput, { ...callOverrides, value })
+  const market = X2Y2R1__factory.connect(marketContract)
+  const tx = await market.populateTransaction.run(runInput, { ...callOverrides, value })
   return tx
 }
 

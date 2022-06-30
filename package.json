@@ -32,7 +32,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@x2y2-io/sdk",
+  "name": "@guptart/sdk",
   "author": "x2y2",
   "module": "dist/x2y2-sdk.esm.js",
   "size-limit": [
@@ -67,5 +67,17 @@
   ],
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "description": "This SDK is a JavaScript library for selling and buying on X2Y2, so you don't need to interact with the X2Y2 API and smart contracts directly.",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://guptart: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@github.com/artemis-market/x2y2-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/artemis-market/x2y2-sdk/issues"
+  },
+  "homepage": "https://github.com/artemis-market/x2y2-sdk#readme"
 }

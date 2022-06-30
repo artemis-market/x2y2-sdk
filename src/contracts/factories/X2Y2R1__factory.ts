@@ -1098,7 +1098,7 @@ export class X2Y2R1__factory {
   static createInterface(): X2Y2R1Interface {
     return new utils.Interface(_abi) as X2Y2R1Interface;
   }
-  static connect(address: string, signerOrProvider: Signer | Provider): X2Y2R1 {
+  static connect(address: string, signerOrProvider?: Signer | Provider): X2Y2R1 {
     return new Contract(address, _abi, signerOrProvider) as X2Y2R1;
   }
 }
